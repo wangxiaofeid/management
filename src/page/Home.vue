@@ -5,7 +5,7 @@
     <a v-link="{ path: 'h' }">Home2</a>
 
 
-    哈哈哈
+    哈哈哈grgre
 
     <alert :show.sync="showRight" placement="top-right" duration="3000" type="success" width="400px;" dismissable>
       <span class="icon-ok-circled alert-icon-float-left"></span>
