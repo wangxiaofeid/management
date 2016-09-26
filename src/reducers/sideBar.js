@@ -1,0 +1,146 @@
+import { SELECT_MENU, EXPAND_MENU } from '../actionTypes'
+
+const menus = {
+	  overview: {
+	    link: '/',
+	    icon: 'fa-cloud',
+	    display: '概览'
+	  },
+	  dashboard: {
+	    icon: 'fa-bar-chart-o',
+	    display: '风险大盘',
+	    submenu: {
+	      riskTrend: {
+	        link: '/dashboard/riskTrend',
+	        display: '风险趋势'
+	      },
+	      riskIndex: {
+	        display: '风险指标',
+	        submenu: {
+	          indexReport: {
+	            link: '/dashboard/riskIndex',
+	            display: '指标报表'
+	          },
+	          deviceCapture: {
+	            display: '设备获取率'
+	          }
+	        }
+	      }
+	    }
+	  },
+	  ruleengine: {
+	    icon: 'fa-flask',
+	    display: '策略规则',
+	    submenu: {
+	      policyManager: {
+	        display: '策略管理',
+	        submenu: {
+	          policySet: {
+	            display: '策略集'
+	          },
+	          policySnapshot: {
+	            display: '策略集快照'
+	          },
+	          policyTemplate: {
+	            display: '策略模板'
+	          },
+	          policyTemplateSnapshot: {
+	            display: '策略模板快照'
+	          },
+	          groupConfiguration: {
+	            display: '分组配置'
+	          },
+	          groupConfigurationTemplate: {
+	            display: '分组配置(模板)'
+	          }
+	        }
+	      },
+	      fieldConfiguration: {
+	        display: '字段配置',
+	        submenu: {
+	          systemField: {
+	            display: '系统字段'
+	          },
+	          extendField: {
+	            display: '扩展字段'
+	          },
+	          dynamicField: {
+	            display: '动态字段'
+	          }
+	        }
+	      },
+	      invokeManager: {
+	        display: '调用管理',
+	        submenu: {
+	          invokeLog: {
+	            display: '调用日志'
+	          },
+	          manualInvoke: {
+	            display: '手工调用'
+	          }
+	        }
+	      },
+	      instructions: {
+	        display: '说明文档',
+	        submenu: {
+	          riskDecision: {
+	            display: '风险决策API'
+	          },
+	          openAPI: {
+	            display: '开放API'
+	          },
+	          ruleConfiguration: {
+	            display: '规则配置'
+	          }
+	        }
+	      }
+	    }
+	  },
+	  smartmap: {
+	    icon: 'fa-users',
+	    display: '智能图谱',
+	    submenu: {
+	      complexMap: {
+	        display: '复杂网络'
+	      },
+	      deviceMap: {
+	        display: '设备分析图谱'
+	      },
+	      accountMap: {
+	        display: '账户分析图谱'
+	      }
+	    }
+	  }
+}
+
+const INIT_STATE = {
+  menus,
+  selectedKey: '',
+  openKey: []
+};
+
+export default function reducer(state = INIT_STATE, { type, payload }) {
+  switch (type) {
+    case SELECT_MENU:
+    {
+      return Object.assign({}, state, { selectedKey: payload});
+    }
+    case EXPAND_MENU:
+    {
+      let openKey = state.openKey.slice(0);
+      if (openKey.find(item => item == payload)) {
+        openKey.splice(openKey.findIndex(item => item == payload), 1);
+      } else {
+        const parent = openKey.find(item => payload.startsWith(item));
+        if (!parent) {
+          openKey = [payload];
+        } else {
+          openKey = [parent, payload];
+        }
+      }
+      return openKey
+    }
+    default:
+      return state;
+  }
+}

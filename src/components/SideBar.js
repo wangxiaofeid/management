@@ -1,80 +1,73 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// import { bindActionCreators } from 'redux'
+import { bindActionCreators } from 'redux'
 // import { Link } from 'react-router'
 import { Menu, Icon } from 'antd';
+import _ from 'lodash';
 const SubMenu = Menu.SubMenu;
-// import { otherAdd, otherSub } from '../actions/other'
+import { selectMenu, expandMenu } from '../actions/sideBar'
 
 class SideBar extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      current: '1',
-      openKeys: []
-    }
     this.handleClick = this.handleClick.bind(this);
-    this.onToggle = this.onToggle.bind(this);
   }
 
-  handleClick(e) {
+  handleClick() {
     // console.log('click ', e);
-    this.setState({
-      current: e.key,
-      openKeys: e.keyPath.slice(1)
-    });
-  }
-
-  onToggle(info) {
-    this.setState({
-      openKeys: info.open ? info.keyPath : info.keyPath.slice(1)
-    });
+    // this.setState({
+    //   current: e.key
+    // });
   }
 
   render() {
+    let { menus, selectedKey, openKey } = this.props;
     return (
       <Menu onClick={this.handleClick}
         style={{ width: 200 }}
-        openKeys={this.state.openKeys}
-        onOpen={this.onToggle}
-        onClose={this.onToggle}
-        selectedKeys={[this.state.current]}
+        selectedKeys={[selectedKey]}
+        openKeys={openKey}
         mode="inline"
       >
-        <SubMenu key="sub1" title={<span><Icon type="mail" /><span>导航一</span></span>}>
-          <Menu.Item key="1">选项1</Menu.Item>
-          <Menu.Item key="2">选项2</Menu.Item>
-          <Menu.Item key="3">选项3</Menu.Item>
-          <Menu.Item key="4">选项4</Menu.Item>
-        </SubMenu>
-        <SubMenu key="sub2" title={<span><Icon type="appstore" /><span>导航二</span></span>}>
-          <Menu.Item key="5">选项5</Menu.Item>
-          <Menu.Item key="6">选项6</Menu.Item>
-          <SubMenu key="sub3" title="三级导航">
-            <Menu.Item key="7">选项7</Menu.Item>
-            <Menu.Item key="8">选项8</Menu.Item>
-          </SubMenu>
-        </SubMenu>
-        <SubMenu key="sub4" title={<span><Icon type="setting" /><span>导航三</span></span>}>
-          <Menu.Item key="9">选项9</Menu.Item>
-          <Menu.Item key="10">选项10</Menu.Item>
-          <Menu.Item key="11">选项11</Menu.Item>
-          <Menu.Item key="12">选项12</Menu.Item>
-        </SubMenu>
+        {
+        _.map(menus, (lv1, id1) => {
+          if (!lv1.submenu) {
+            return (<Menu.Item key={ id1 }>{ lv1.display }</Menu.Item>)
+          }else{
+            return(<SubMenu key={id1} title={<span><Icon type={lv1.icon} /><span>{ lv1.display }</span></span>}>
+              {
+                _.map(lv1.submenu, (lv2, id2) => {
+                  if (!lv2.submenu) {
+                    return (<Menu.Item key={ id2 }>{ lv2.display }</Menu.Item>)
+                  }else{
+                    return (<SubMenu key={id2} title={<span><Icon type={lv2.icon} /><span>{ lv2.display }</span></span>}>
+                      {
+                        _.map(lv2.submenu, (lv3, id3) => {
+                          return (<Menu.Item key={ id3 }>{ lv3.display }</Menu.Item>)
+                        })
+                      }
+                    </SubMenu>)
+                  }
+                })
+              }
+            </SubMenu>)
+          }
+        })
+        }
       </Menu>
     )
   }
 }
 
-// function mapStateToProps(state) {
-//   return {
-//     // other: state.other
-//   }
-// }
+function mapStateToProps(state) {
+  return {
+    other: state.sideBar
+  }
+}
 
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators({  }, dispatch)
-// }
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ selectMenu, expandMenu }, dispatch)
+}
 
-export default connect()(SideBar)
+export default connect(mapStateToProps, mapDispatchToProps)(SideBar)
 
