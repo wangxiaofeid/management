@@ -17,9 +17,7 @@ const store = configureStore(preloadedState)
 const history = syncHistoryWithStore(browserHistory, store)
 
 // 注意 subscribe() 返回一个函数用来注销监听器
-let unsubscribe = store.subscribe(() =>
-  console.log(store.getState())
-)
+// store.subscribe(() => console.log(store.getState()))
 
 render(
   <Provider store={store}>

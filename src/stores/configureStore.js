@@ -1,12 +1,20 @@
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
+import createLogger from 'redux-logger';
+
 import rootReducer from '../reducers'
+import DevTools from '../devtools';
 
 export default function configureStore(preloadedState) {
+  let logger = createLogger();
+
   const store = createStore(
     rootReducer,
     preloadedState,
-    applyMiddleware(thunk)
+    compose(
+      applyMiddleware(thunk, logger),
+      (typeof window === 'object' && window.devToolsExtension ? window.devToolsExtension() : DevTools.instrument())
+    )
   )
 
   if (module.hot) {
@@ -19,16 +27,3 @@ export default function configureStore(preloadedState) {
 
   return store
 }
-
-
-/*
-{
-  user:{
-    name:"游客",
-    color:"red",
-    id:""
-  }
-  messages:"",
-  userlist:[]
-}
-*/ 
