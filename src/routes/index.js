@@ -1,7 +1,8 @@
 import React from 'react'
 import { Route } from 'react-router'
 import App from '../containers/App'
-import NoMatch from '../containers/NoMatch'
+
+import NoMatch from '../page/NoMatch'
 import Other from '../containers/Other'
 
 export default (
@@ -10,5 +11,3 @@ export default (
 	    <Route path="*" component={NoMatch}/>
   	</Route>
 )
-
-// <Route path="/app" component={App} />

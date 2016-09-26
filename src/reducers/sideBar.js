@@ -3,11 +3,11 @@ import { SELECT_MENU, EXPAND_MENU } from '../actionTypes'
 const menus = {
 	  overview: {
 	    link: '/',
-	    icon: 'fa-cloud',
+	    icon: 'appstore',
 	    display: '概览'
 	  },
 	  dashboard: {
-	    icon: 'fa-bar-chart-o',
+	    icon: 'mail',
 	    display: '风险大盘',
 	    submenu: {
 	      riskTrend: {
@@ -29,7 +29,7 @@ const menus = {
 	    }
 	  },
 	  ruleengine: {
-	    icon: 'fa-flask',
+	    icon: 'setting',
 	    display: '策略规则',
 	    submenu: {
 	      policyManager: {
@@ -97,7 +97,7 @@ const menus = {
 	    }
 	  },
 	  smartmap: {
-	    icon: 'fa-users',
+	    icon: 'setting',
 	    display: '智能图谱',
 	    submenu: {
 	      complexMap: {
@@ -115,7 +115,7 @@ const menus = {
 
 const INIT_STATE = {
   menus,
-  selectedKey: '',
+  selectedKey: 'riskTrend',
   openKey: []
 };
 
@@ -127,18 +127,7 @@ export default function reducer(state = INIT_STATE, { type, payload }) {
     }
     case EXPAND_MENU:
     {
-      let openKey = state.openKey.slice(0);
-      if (openKey.find(item => item == payload)) {
-        openKey.splice(openKey.findIndex(item => item == payload), 1);
-      } else {
-        const parent = openKey.find(item => payload.startsWith(item));
-        if (!parent) {
-          openKey = [payload];
-        } else {
-          openKey = [parent, payload];
-        }
-      }
-      return openKey
+      return payload
     }
     default:
       return state;
