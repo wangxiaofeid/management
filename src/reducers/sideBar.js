@@ -11,7 +11,7 @@ const menus = {
 	    display: '风险大盘',
 	    submenu: {
 	      riskTrend: {
-	        link: '/dashboard/riskTrend',
+	        link: '/test',
 	        display: '风险趋势'
 	      },
 	      riskIndex: {

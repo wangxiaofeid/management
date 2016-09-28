@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
 import { Dropdown, Menu, Icon} from 'antd'
 
 import yeomanImage from '../images/yeoman.png'
@@ -14,7 +15,10 @@ const menu = (
   </Menu>
 );
 
-export default class FooterBar extends Component{
+class FooterBar extends Component{
+	constructor(props) {
+	    super(props);
+	  }
 	render(){
 		return (
 			<div className="ant-layout-header">
@@ -23,7 +27,7 @@ export default class FooterBar extends Component{
 					<div className="ant-layout-login">
 						<Dropdown overlay={menu}>
 						    <a className="ant-dropdown-link" href="#">
-						      <Icon type="user" style={{fontSize:'18px'}}/>某某用户
+						      <Icon type="user" style={{fontSize:'18px'}}/>{this.props.user.username||'某某用户xx'}
 						    </a>
 						</Dropdown>
 					</div>
@@ -32,4 +36,16 @@ export default class FooterBar extends Component{
 		)
 	}
 }
+
+function mapStateToProps(state) {
+  return {
+    user: state.user
+  }
+}
+
+// function mapDispatchToProps(dispatch) {
+//   return bindActionCreators({ selectMenu, expandMenu }, dispatch)
+// }
+
+export default connect(mapStateToProps)(FooterBar)
 

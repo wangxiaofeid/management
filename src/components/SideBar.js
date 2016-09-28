@@ -10,7 +10,7 @@ const SubMenu = Menu.SubMenu;
 class SideBar extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props.routing);
+    // console.log(this.props.routing);
   }
 
   render() {
