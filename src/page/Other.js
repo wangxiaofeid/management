@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Link } from 'react-router'
+import 'nprogress/nprogress.css'
+import nprogress from 'nprogress'
 
 import { Button, Table } from 'antd'
 import { otherAdd, otherSub } from '../actions/other'
@@ -79,6 +81,15 @@ class Other extends Component {
     window.location.href='https://www.baidu.com'
   }
 
+  otherStart(){
+    nprogress.start();
+  }
+
+  otherEnd(){
+    nprogress.done();
+    nprogress.remove();
+  }
+
   render() {
     return (
     	<div>
@@ -91,6 +102,10 @@ class Other extends Component {
         <Link to={'/null'}>404页面</Link>
 
         <Button onClick={this.goPage}>跳转页面</Button>
+
+        <Button onClick={this.otherStart}>开始</Button>
+
+        <Button onClick={this.otherEnd}>结束</Button>
 
         <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
     	</div>
