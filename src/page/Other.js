@@ -101,6 +101,8 @@ class Other extends Component {
         
         <Link to={'/null'}>404页面</Link>
 
+        <Link to={'/test2/wangxiaofei'}>test2/wangxiaofei</Link>
+
         <Button onClick={this.goPage}>跳转页面</Button>
 
         <Button onClick={this.otherStart}>开始</Button>

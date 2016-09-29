@@ -25,7 +25,14 @@ const routes = { path: '/',
 			    require.ensure([], function (require) {
 			      callback(null, require('../page/Other2'))
 			    })
-			}
+			},
+			childRoutes: [
+				{ path: ':name', getComponents(location, callback) {
+				    require.ensure([], function (require) {
+				      callback(null, require('../page/NameShow'))
+				    })
+				}}
+			]
 		},
       	{ path: 'test/:id', component: TestShow,},
       	{ path: '*', component: NoMatch },
