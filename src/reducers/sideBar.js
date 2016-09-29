@@ -18,7 +18,7 @@ const menus = {
 	        display: '风险指标',
 	        submenu: {
 	          indexReport: {
-	            link: '/dashboard/riskIndex',
+	            link: '/test2',
 	            display: '指标报表'
 	          },
 	          deviceCapture: {
