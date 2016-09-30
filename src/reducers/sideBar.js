@@ -22,7 +22,12 @@ const menus = {
 	            display: '指标报表'
 	          },
 	          deviceCapture: {
-	            display: '设备获取率'
+	          	link: '/testFile',
+	            display: '文件上传'
+	          },
+	          deviceCapture2: {
+	          	link: '/testFile2',
+	            display: '文件上传2'
 	          }
 	        }
 	      }

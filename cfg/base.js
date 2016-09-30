@@ -25,7 +25,13 @@ module.exports = {
     hot: true,
     port: defaultSettings.port,
     publicPath: defaultSettings.publicPath,
-    noInfo: false
+    noInfo: false,
+    proxy: {
+      'api/upload': {
+        target: 'http://localhost:8989/api/upload',
+        secure: false
+      }
+    }
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],

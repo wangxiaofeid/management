@@ -34,7 +34,10 @@ const routes = { path: '/',
 				}}
 			]
 		},
-      	{ path: 'test/:id', component: TestShow,},
+      	{ path: 'test/:id', component: TestShow },
+      	{ path: 'testFile', component: require('../page/TestFile') },
+      	{ path: 'testFile2', component: require('../page/TestFile2') },
+      	
       	{ path: '*', component: NoMatch },
     ]
 }
