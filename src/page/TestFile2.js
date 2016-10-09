@@ -5,6 +5,8 @@ import moment from 'moment'
 import { Form, Input, Button, Checkbox, Cascader, DatePicker, InputNumber, Radio, Rate, Switch, Upload , Icon} from 'antd';
 const FormItem = Form.Item;
 
+import iframeUploader from '../lib/IframeUploader'
+
 
 const options = [{
   value: 'zhejiang',
@@ -40,14 +42,20 @@ class TestFile2 extends Component {
     // this.props.form.setFieldsValue({
     //   userName: 'wxf'
     // });
+    fetch('/user/getAll');
   }
 
   handleSubmit(e) {
     e.preventDefault();
     console.log('Received values of form:', this.props.form.getFieldsValue());
+
+    new iframeUploader({
+      data: this.props.form.getFieldsValue()
+    });
   }
 
-  upload(){
+  upload(arg){
+    console.log(arg);
     return false;
   }
 

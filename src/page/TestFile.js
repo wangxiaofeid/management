@@ -5,7 +5,7 @@ import { Link } from 'react-router'
 import { Form, Upload, Button, Icon, message } from 'antd'
 
 const props = {
-  action: 'api/upload',
+  action: '/api/upload',
   multiple: false,
   beforeUpload(file) {
     // const isJPG = file.type === 'image/jpeg';

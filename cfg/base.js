@@ -27,8 +27,12 @@ module.exports = {
     publicPath: defaultSettings.publicPath,
     noInfo: false,
     proxy: {
-      'api/upload': {
-        target: 'http://localhost:8989/api/upload',
+      '/api/upload': {
+        target: 'http://localhost:8989/',
+        secure: false
+      },
+      '/user/getAll': {
+        target: 'http://localhost:8989/',
         secure: false
       }
     }
