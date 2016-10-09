@@ -1,0 +1,25 @@
+.section-form .input-file-wrap{padding: 3px 0;border: 1px solid #eee;font-size: 14px;color: #666;display: inline-block;vertical-align: middle;background:#fcfcfc url(../images/fileType.png) center 15px no-repeat;padding-top: 94px;border-radius: 0px;margin-left: 0;width: 170px;text-align: center;position: relative;overflow: hidden;}
+.section-form .input-file-wrap .input-file{height: 120px;cursor: pointer;position: absolute;
+    top: 0;
+    right: 0;
+    width: 120%;
+    opacity: 0;
+    display: inline-block;}
+.section-form .form-value{display: block;}
+.section-form .close{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border-radius: 20px;
+	color: #fff;
+	background: #eee;
+	text-align: center;
+	line-height: 18px;
+	font-size: 18px;
+	vertical-align: middle;
+	cursor: pointer;
+	margin-left: 10px;
+}
+.section-form .upload-file-text-input{
+	width: 80%;
+}

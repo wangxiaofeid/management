@@ -5,7 +5,8 @@ import moment from 'moment'
 import { Form, Input, Button, Checkbox, Cascader, DatePicker, InputNumber, Radio, Rate, Switch, Upload , Icon} from 'antd';
 const FormItem = Form.Item;
 
-import iframeUploader from '../lib/IframeUploader'
+import ajaxUploader from '../lib/ajaxUploader'
+import File from '../components/File'
 
 
 const options = [{
@@ -39,9 +40,13 @@ class TestFile2 extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.onChange = this.onChange.bind(this);
     // this.props.form.setFieldsValue({
     //   userName: 'wxf'
     // });
+    this.state = {
+      file: ''
+    }
     fetch('/user/getAll');
   }
 
@@ -49,9 +54,16 @@ class TestFile2 extends Component {
     e.preventDefault();
     console.log('Received values of form:', this.props.form.getFieldsValue());
 
-    new iframeUploader({
-      data: this.props.form.getFieldsValue()
-    });
+    if(this.state.file){
+      ajaxUploader({
+        action: 'api/upload',
+        filename: 'file',
+        file: this.state.file,  // Array.prototype.slice.call(document.getElementById('file').files)[0],
+        data: this.props.form.getFieldsValue(),
+        onSuccess: function(response, file){ console.log(response);},
+        onError: function(error){ console.log(error) }
+      });
+    }
   }
 
   upload(arg){
@@ -59,8 +71,10 @@ class TestFile2 extends Component {
     return false;
   }
 
-  file(file){
-    console.log(file);
+  onChange(file){
+    this.setState({
+      file: file
+    });
   }
 
   render(){
@@ -132,20 +146,7 @@ class TestFile2 extends Component {
               <Checkbox defaultChecked>Remember me</Checkbox>
             )}
           </FormItem>
-          <FormItem label="上传文件">
-            {getFieldDecorator('file')(
-            <Upload  action='/' beforeUpload={this.upload} data={this.file}>
-              <Button type="ghost">
-                <Icon type="upload" /> Click to Upload
-              </Button>
-            </Upload>
-            )}
-          </FormItem>
-          <FormItem label="上传文件（自己）">
-            {getFieldDecorator('file2')(
-            <Input type="file" />
-            )}
-          </FormItem>
+          <File onChange={this.onChange}/>
           <Button type="primary" htmlType="submit">Submit</Button>
         </Form>
       </div>
