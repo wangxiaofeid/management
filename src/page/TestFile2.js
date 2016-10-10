@@ -58,7 +58,7 @@ class TestFile2 extends Component {
       ajaxUploader({
         action: 'api/upload',
         filename: 'file',
-        file: this.state.file,  // Array.prototype.slice.call(document.getElementById('file').files)[0],
+        file: this.state.file,
         data: this.props.form.getFieldsValue(),
         onSuccess: function(response, file){ console.log(response);},
         onError: function(error){ console.log(error) }
@@ -146,7 +146,9 @@ class TestFile2 extends Component {
               <Checkbox defaultChecked>Remember me</Checkbox>
             )}
           </FormItem>
-          <File onChange={this.onChange}/>
+          <FormItem>
+            <File onChange={this.onChange}></File>
+          </FormItem>
           <Button type="primary" htmlType="submit">Submit</Button>
         </Form>
       </div>

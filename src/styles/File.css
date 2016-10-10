@@ -1,11 +1,18 @@
-.section-form .input-file-wrap{padding: 3px 0;border: 1px solid #eee;font-size: 14px;color: #666;display: inline-block;vertical-align: middle;background:#fcfcfc url(../images/fileType.png) center 15px no-repeat;padding-top: 94px;border-radius: 0px;margin-left: 0;width: 170px;text-align: center;position: relative;overflow: hidden;}
-.section-form .input-file-wrap .input-file{height: 120px;cursor: pointer;position: absolute;
+.section-form .input-file-wrap{
+	position: relative;
+	overflow: hidden;
+	vertical-align: top;
+}
+.section-form .input-file-wrap .input-file{
+	cursor: pointer;
+	position: absolute;
     top: 0;
     right: 0;
-    width: 120%;
+    width: 100%;
+    height: 100%;
     opacity: 0;
-    display: inline-block;}
-.section-form .form-value{display: block;}
+    display: block;
+}
 .section-form .close{
 	display: inline-block;
 	width: 20px;
