@@ -3,15 +3,13 @@
     "es2015",
     "stage-0",
     "react"
-  ]
-  /*,
+  ],
   "plugins": [
     ["import", {
 		  "style": "less",
 		  "libraryDirectory": "lib",  // default: lib
-		  "libraryName": "antd",
-		  "camel2DashComponentName": false, // default: true
+		  "libraryName": "antd"
 		}]
   ]
-  */
+
 }
