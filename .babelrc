@@ -5,10 +5,13 @@
     "react"
   ]
   /*,
-  "plugins": [["import", {
-							  "style": "less",
-							  "libraryDirectory": "lib",  // default: lib
-							  "libraryName": "antd",
-							  "camel2DashComponentName": false, // default: true
-							}]]*/
+  "plugins": [
+    ["import", {
+		  "style": "less",
+		  "libraryDirectory": "lib",  // default: lib
+		  "libraryName": "antd",
+		  "camel2DashComponentName": false, // default: true
+		}]
+  ]
+  */
 }
