@@ -1,5 +1,7 @@
-import 'core-js/fn/object/assign';
-import 'babel-polyfill'
+// @flow
+
+// import 'core-js/fn/object/assign';
+// import 'babel-polyfill'
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
@@ -18,6 +20,8 @@ const history = syncHistoryWithStore(browserHistory, store)
 
 // 注意 subscribe() 返回一个函数用来注销监听器
 // store.subscribe(() => console.log(store.getState()))
+
+var num: string = 'ff';
 
 render(
   <Provider store={store}>

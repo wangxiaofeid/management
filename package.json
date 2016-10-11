@@ -64,7 +64,13 @@
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.6",
     "webpack": "^1.12.0",
-    "webpack-dev-server": "^1.12.0"
+    "webpack-dev-server": "^1.12.0",
+    "iflow-lodash": "^1.1.27",
+    "iflow-react-redux": "^1.1.17",
+    "iflow-react-router": "^1.1.17",
+    "iflow-react-router-redux": "^1.0.15",
+    "iflow-redux-thunk": "^1.0.15",
+    "flow-status-webpack-plugin": "^0.1.7"
   },
   "dependencies": {
     "antd": "^2.0.1",

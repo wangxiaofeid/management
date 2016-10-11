@@ -5,6 +5,8 @@ let webpack = require('webpack');
 let baseConfig = require('./base');
 let defaultSettings = require('./defaults');
 
+let FlowStatusWebpackPlugin = require('flow-status-webpack-plugin');
+
 // Add needed plugins here
 let BowerWebpackPlugin = require('bower-webpack-plugin');
 
@@ -21,6 +23,11 @@ let config = Object.assign({}, baseConfig, {
     new webpack.NoErrorsPlugin(),
     new BowerWebpackPlugin({
       searchResolveModulesDirectories: false
+    }),
+    new FlowStatusWebpackPlugin({
+      failOnError: true,
+      onSuccess: function(stdout) { console.log({ title: 'Flow', message: 'Flow is happy!' }); },
+      onError: function(stdout) { console.log(stdout) }
     })
   ],
   module: defaultSettings.getDefaultModules()
