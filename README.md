@@ -1,6 +1,6 @@
 # management
 
-> underfined
+> vue版本
 
 ## Build Setup
 
