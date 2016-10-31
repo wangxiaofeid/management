@@ -125,4 +125,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ otherAdd, otherSub }, dispatch)
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Other)
+module.exports = connect(mapStateToProps,mapDispatchToProps)(Other)

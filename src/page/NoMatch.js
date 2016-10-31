@@ -14,4 +14,4 @@ class NoMatch extends Component {
   }
 }
 
-export default connect()(NoMatch)
+module.exports = connect()(NoMatch)

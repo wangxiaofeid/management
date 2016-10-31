@@ -16,4 +16,4 @@ class TestShow extends Component {
   }
 }
 
-export default connect()(TestShow)
+module.exports = connect()(TestShow)

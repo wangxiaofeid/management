@@ -2,43 +2,67 @@ import React from 'react'
 import { Route } from 'react-router'
 import App from '../containers/App'
 
-import NoMatch from '../page/NoMatch'
 import Other from '../page/Other'
-// import Other2 from '../page/Other2'
-import TestShow from '../page/TestShow'
 
-// export default (
-//   	<Route path="/" component={App}>
-// 	    <Route path="/test" component={Other} />
-// 	    </Route>
-// 	    <Route path="*" component={NoMatch}/>
-//   	</Route>
-// )
-
-const routes = { path: '/',
+const routes = {
+		path: '/',
     component: App,
     indexRoute: { component: Other },
     childRoutes: [
-      	{ path: 'test', component: Other },
-      	{ path: 'test2',  //component: Other2
-	      	getComponents(location, callback) {
+      {
+      	path: 'test',
+      	component: Other
+      },
+      {
+      	path: 'test2',
+	      getComponents(location, callback) {
 			    require.ensure([], function (require) {
 			      callback(null, require('../page/Other2'))
 			    })
+				},
+				childRoutes: [
+					{
+						path: ':name',
+						getComponents(location, callback) {
+					    require.ensure([], function (require) {
+					      callback(null, require('../page/NameShow'))
+					    })
+						}
+					}
+				]
 			},
-			childRoutes: [
-				{ path: ':name', getComponents(location, callback) {
-				    require.ensure([], function (require) {
-				      callback(null, require('../page/NameShow'))
-				    })
-				}}
-			]
-		},
-      	{ path: 'test/:id', component: TestShow },
-      	{ path: 'testFile', component: require('../page/TestFile') },
-      	{ path: 'testFile2', component: require('../page/TestFile2') },
-      	
-      	{ path: '*', component: NoMatch },
+    	{
+    		path: 'test/:id',
+    		getComponents(location, callback) {
+			    require.ensure([], function (require) {
+			      callback(null, require('../page/TestShow'))
+			    })
+				}
+    	},
+    	{
+    		path: 'testFile',
+    		getComponents(location, callback) {
+			    require.ensure([], function (require) {
+			      callback(null, require('../page/TestFile'))
+			    })
+				}
+    	},
+    	{
+    		path: 'testFile2',
+    		getComponents(location, callback) {
+			    require.ensure([], function (require) {
+			      callback(null, require('../page/TestFile2'))
+			    })
+				}
+    	},
+    	{
+    		path: '*',
+    		getComponents(location, callback) {
+			    require.ensure([], function (require) {
+			      callback(null, require('../page/NoMatch'))
+			    })
+				}
+    	},
     ]
 }
 
