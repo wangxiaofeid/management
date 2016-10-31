@@ -1,0 +1,31 @@
+
+.container_404 {
+	margin-left: auto; 
+	width: 100%; 
+	margin-right: auto; 
+	text-align: center; 
+	margin-top:100px;
+}
+.container_1 img { 
+	margin-top:5%; 
+	width:250px; 
+	height:120px;
+}
+.container_2 img { 
+	margin-top:-2%; 
+}
+.container_3 img { 
+	width:25%; 
+	height:7.5%;
+}
+.container_3 { 
+	width:28vw; 
+	margin:auto}
+.container_3_1 { 
+	color:#6bbaa3; 
+	font-size:2vw;
+}
+.container_3_2 { 
+	color:#6bbaa3; 
+	font-size:1.2vw;
+}

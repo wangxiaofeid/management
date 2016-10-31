@@ -4,7 +4,7 @@ import App from '../containers/App'
 
 import Other from '../page/Other'
 
-const routes = {
+const routes = [{
 		path: '/',
     component: App,
     indexRoute: { component: Other },
@@ -55,15 +55,17 @@ const routes = {
 			    })
 				}
     	},
-    	{
-    		path: '*',
-    		getComponents(location, callback) {
-			    require.ensure([], function (require) {
-			      callback(null, require('../page/NoMatch'))
-			    })
-				}
-    	},
+    	
     ]
-}
+	},
+	{
+		path: '*',
+		getComponents(location, callback) {
+	    require.ensure([], function (require) {
+	      callback(null, require('../page/NoMatch'))
+	    })
+		}
+	},
+]
 
 export default routes;

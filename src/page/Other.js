@@ -95,21 +95,23 @@ class Other extends Component {
     	<div>
         {this.props.other}
 
-        <Button onClick={this.props.otherAdd}>增加</Button>
+        <Button style={{ marginLeft: 10}} onClick={this.props.otherAdd}>增加</Button>
 
-        <Button onClick={this.props.otherSub}>减少</Button>
+        <Button style={{ marginLeft: 10}} onClick={this.props.otherSub}>减少</Button>
         
-        <Link to={'/null'}>404页面</Link>
+        <Link style={{ marginLeft: 10}} to={'/null'}>404页面</Link>
 
-        <Link to={'/test2/wangxiaofei'}>test2/wangxiaofei</Link>
+        <Link style={{ marginLeft: 10}} to={'/test2/wangxiaofei'}>test2/wangxiaofei</Link>
 
-        <Button onClick={this.goPage}>跳转页面</Button>
+        <a style={{ marginLeft: 10}} href="https://www.baidu.com">普通绝对链接</a>
+        <a style={{ marginLeft: 10}} href="/null">普通相对链接</a>
+        <Button style={{ marginLeft: 10}} onClick={this.goPage}>跳转页面</Button>
 
-        <Button onClick={this.otherStart}>开始</Button>
+        <Button style={{ marginLeft: 10}} onClick={this.otherStart}>开始</Button>
 
-        <Button onClick={this.otherEnd}>结束</Button>
+        <Button style={{ marginLeft: 10}} onClick={this.otherEnd}>结束</Button>
 
-        <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
+        <Table style={{ marginTop: 10}} rowSelection={rowSelection} columns={columns} dataSource={data} />
     	</div>
     )
   }
