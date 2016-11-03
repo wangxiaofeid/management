@@ -10,10 +10,17 @@ let defaultSettings = require('./defaults');
 let BowerWebpackPlugin = require('bower-webpack-plugin');
 
 let config = Object.assign({}, baseConfig, {
-  entry: path.join(__dirname, '../src/index'),
+  entry: {
+    app: path.join(__dirname, '../src/index'),
+    common: ['react', 'redux', 'react-redux', 'react-dom', 'react-router', 'react-router-redux'],
+  },
   cache: false,
   devtool: 'sourcemap',
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: ['common'],
+      filename: 'common.js',
+    }),
     new webpack.optimize.DedupePlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"'
