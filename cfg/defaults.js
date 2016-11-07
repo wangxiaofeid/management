@@ -9,6 +9,7 @@
 const path = require('path');
 const srcPath = path.join(__dirname, '/../src');
 const dfltPort = 8000;
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 /**
  * Get the default modules object for webpack
@@ -26,7 +27,7 @@ function getDefaultModules() {
     loaders: [
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader'
+        loader: ExtractTextPlugin.extract("style-loader","css-loader")
       },
       {
         test: /\.sass/,

@@ -5,6 +5,7 @@ let webpack = require('webpack');
 let baseConfig = require('./base');
 let defaultSettings = require('./defaults');
 
+let ExtractTextPlugin = require("extract-text-webpack-plugin");
 // Add needed plugins here
 let BowerWebpackPlugin = require('bower-webpack-plugin');
 
@@ -24,6 +25,7 @@ let config = Object.assign({}, baseConfig, {
       name: ['common'],
       filename: 'common.js',
     }),
+    new ExtractTextPlugin("style.css"),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new BowerWebpackPlugin({
