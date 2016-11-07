@@ -37,7 +37,6 @@ class Other2 extends Component {
       total: 1000,
       pageSize: 10
     }
-    
   }
 
   componentDidMount(){
@@ -73,7 +72,7 @@ class Other2 extends Component {
   }
 
   showSizeChange = (current, pageSize)=>{
-    var page = Math.ceil(current*this.state.pageSize/pageSize) + 1;
+    var page = Math.ceil(this.state.current*this.state.pageSize/pageSize);
     this.setState({
     	pageSize: pageSize
     });
