@@ -54,6 +54,36 @@ const data = [{
   name: '李大嘴',
   age: 32,
   address: '西湖区湖底公园1号'
+}, {
+  key: '8',
+  name: '胡彦祖',
+  age: 42,
+  address: '西湖区湖底公园1号'
+}, {
+  key: '9',
+  name: '李大嘴',
+  age: 32,
+  address: '西湖区湖底公园1号'
+}, {
+  key: '10',
+  name: '李大嘴',
+  age: 32,
+  address: '西湖区湖底公园1号'
+}, {
+  key: '11',
+  name: '李大嘴',
+  age: 32,
+  address: '西湖区湖底公园1号'
+}, {
+  key: '12',
+  name: '李大嘴',
+  age: 32,
+  address: '西湖区湖底公园1号'
+}, {
+  key: '13',
+  name: '李大嘴',
+  age: 32,
+  address: '西湖区湖底公园1号'
 }];
 
 // 通过 rowSelection 对象表明需要行选择
@@ -90,7 +120,22 @@ class Other extends Component {
     nprogress.remove();
   }
 
+  pageOnChange = (page)=>{
+    console.log(page);
+  }
+
+  showSizeChange = (page)=>{
+    console.log(page);
+  }
+
   render() {
+    var pagination = {
+      current: 2,
+      total: 1000,
+      showSizeChanger: true,
+      onChange: this.pageOnChange,
+      onShowSizeChange: this.showSizeChange
+    }
     return (
     	<div>
         {this.props.other}
@@ -111,7 +156,13 @@ class Other extends Component {
 
         <Button style={{ marginLeft: 10}} onClick={this.otherEnd}>结束</Button>
 
-        <Table style={{ marginTop: 10}} rowSelection={rowSelection} columns={columns} dataSource={data} />
+        <Table
+          style={{ marginTop: 10}}
+          rowSelection={rowSelection}
+          columns={columns}
+          dataSource={data}
+          pagination={ pagination }
+        />
     	</div>
     )
   }
